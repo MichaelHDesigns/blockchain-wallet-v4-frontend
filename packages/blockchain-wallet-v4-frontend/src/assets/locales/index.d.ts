@@ -1717,7 +1717,7 @@ type MessagesType = {
   'scenes.login.resendsms': 'Resend SMS'
   'scenes.login.sendguid': 'Send my Wallet ID'
   'scenes.login.simplebuy.header': 'Buy Crypto With Credit Card'
-  'scenes.login.wallet.link': 'Dont have a wallet?'
+  'scenes.login.wallet.link': "Don't have a wallet?"
   'scenes.login.wallet.signup': 'Sign Up'
   'scenes.login.welcome': 'Welcome back!'
   'scenes.login.wrong_password': 'Error decrypting wallet. Wrong password'
