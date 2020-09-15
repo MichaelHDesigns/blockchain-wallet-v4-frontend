@@ -13,7 +13,7 @@ import { getData } from './selectors'
 import { RootState } from 'data/rootReducer'
 import { UserDataType } from 'data/types'
 import DataError from 'components/DataError'
-import Loading from './template.loading'
+// import Loading from './template.loading'
 import React, { PureComponent } from 'react'
 import Success from './template.success'
 
@@ -28,8 +28,10 @@ class TransferDetails extends PureComponent<Props> {
     return this.props.data.cata({
       Success: val => <Success {...val} {...this.props} />,
       Failure: e => <DataError message={{ message: e }} />,
-      Loading: () => <Loading />,
-      NotAsked: () => <Loading />
+      // Loading: () => <Loading />,
+      Loading: () => <div>LOADING DIV XFER</div>,
+      NotAsked: () => <div>not asked DIV XFER</div>
+      // NotAsked: () => <Loading />
     })
   }
 }

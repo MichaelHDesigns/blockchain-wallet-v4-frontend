@@ -19,7 +19,7 @@ import { getData } from './selectors'
 import { Remote } from 'blockchain-wallet-v4/src'
 import { RootState } from 'data/rootReducer'
 import Failure from './template.failure'
-import Loading from './template.loading'
+// import Loading from './template.loading'
 import Success from './template.success'
 
 class EnterAmount extends PureComponent<Props> {
@@ -45,8 +45,8 @@ class EnterAmount extends PureComponent<Props> {
     return this.props.data.cata({
       Success: val => <Success {...val} {...this.props} />,
       Failure: () => <Failure {...this.props} />,
-      Loading: () => <Loading />,
-      NotAsked: () => <Loading />
+      Loading: () => <div>LOADING</div>,
+      NotAsked: () => <div>NOT ASKED</div>
     })
   }
 }

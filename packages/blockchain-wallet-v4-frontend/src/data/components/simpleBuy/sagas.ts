@@ -34,6 +34,7 @@ import {
   NO_PAYMENT_TYPE
 } from './model'
 import { errorHandler } from 'blockchain-wallet-v4/src/utils'
+import { pathOr } from 'ramda'
 import { Remote } from 'blockchain-wallet-v4/src'
 import {
   SBAddCardErrorType,
@@ -840,6 +841,7 @@ export default ({
     )
     const fiatCurrency = selectors.preferences.getSBFiatCurrency(yield select())
     const latestPendingOrder = S.getSBLatestPendingOrder(yield select())
+    const simpleBuyGoal = yield select(selectors.goals.getGoals)
 
     if (!fiatCurrency) {
       yield put(A.setStep({ step: 'CURRENCY_SELECTION' }))
@@ -855,16 +857,37 @@ export default ({
         })
       )
     } else if (cryptoCurrency) {
-      yield put(
-        // 🚨 SPECIAL TS-IGNORE
-        // Usually ENTER_AMOUNT should require a pair but
-        // here we do not require a pair. Instead we have
-        // cryptoCurrency and fiatCurrency and
-        // INITIALIZE_CHECKOUT will set the pair on state.
-        // 🚨 SPECIAL TS-IGNORE
-        // @ts-ignore
-        A.setStep({ step: 'ENTER_AMOUNT', cryptoCurrency, fiatCurrency })
-      )
+      const amount = pathOr('', ['data', 'amount'], simpleBuyGoal)
+      simpleBuyGoal
+        ? yield put(
+            // 🚨 SPECIAL TS-IGNORE
+            // Usually ENTER_AMOUNT should require a pair but
+            // here we do not require a pair. Instead we have
+            // cryptoCurrency and fiatCurrency and
+            // INITIALIZE_CHECKOUT will set the pair on state.
+            // 🚨 SPECIAL TS-IGNORE
+            // @ts-ignore
+            A.setStep({
+              amount,
+              cryptoCurrency,
+              fiatCurrency,
+              step: 'ENTER_AMOUNT'
+            })
+          )
+        : yield put(
+            // 🚨 SPECIAL TS-IGNORE
+            // Usually ENTER_AMOUNT should require a pair but
+            // here we do not require a pair. Instead we have
+            // cryptoCurrency and fiatCurrency and
+            // INITIALIZE_CHECKOUT will set the pair on state.
+            // 🚨 SPECIAL TS-IGNORE
+            // @ts-ignore
+            A.setStep({
+              step: 'ENTER_AMOUNT',
+              cryptoCurrency,
+              fiatCurrency
+            })
+          )
     } else {
       yield put(
         A.setStep({ step: 'CRYPTO_SELECTION', cryptoCurrency, fiatCurrency })

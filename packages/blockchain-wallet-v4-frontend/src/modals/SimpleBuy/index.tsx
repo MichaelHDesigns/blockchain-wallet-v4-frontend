@@ -29,7 +29,7 @@ import React, { PureComponent } from 'react'
 import ThreeDSHandler from './ThreeDSHandler'
 import TransferDetails from './TransferDetails'
 
-import Loading from './template.loading'
+// import Loading from './template.loading'
 import Pending from './template.pending'
 import Rejected from './template.rejected'
 
@@ -208,7 +208,8 @@ class SimpleBuy extends PureComponent<Props, State> {
           direction={this.state.direction}
           data-e2e='simpleBuyModal'
         >
-          <Loading />
+          LOADING BITCH
+          {/* <Loading /> */}
         </Flyout>
       ),
       NotAsked: () => (
@@ -219,7 +220,8 @@ class SimpleBuy extends PureComponent<Props, State> {
           direction={this.state.direction}
           data-e2e='simpleBuyModal'
         >
-          <Loading />
+          {/* <Loading /> */}
+          NOT ASKED B
         </Flyout>
       )
     })

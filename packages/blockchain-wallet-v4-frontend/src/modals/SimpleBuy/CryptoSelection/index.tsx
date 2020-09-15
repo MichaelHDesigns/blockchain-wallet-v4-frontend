@@ -6,7 +6,7 @@ import { getData } from './selectors'
 import { Remote } from 'blockchain-wallet-v4/src'
 import { RootState } from 'data/rootReducer'
 import Failure from './template.failure'
-import Loading from './template.loading'
+// import Loading from './template.loading'
 import React, { PureComponent } from 'react'
 import Success from './template.success'
 
@@ -22,8 +22,9 @@ class CryptoSelection extends PureComponent<Props> {
     return this.props.data.cata({
       Success: val => <Success {...this.props} {...val} />,
       Failure: () => <Failure {...this.props} />,
-      Loading: () => <Loading />,
-      NotAsked: () => <Loading />
+      Loading: () => <div>CRYP SELEC</div>,
+      NotAsked: () => <div>not asked</div>
+      // NotAsked: () => <Loading />
     })
   }
 }
