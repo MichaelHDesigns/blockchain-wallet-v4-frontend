@@ -248,17 +248,17 @@
         },
         "ALGO": {
           "availability": {
-            "send": false,
-            "request": false,
+            "send": true,
+            "request": true,
             "lockbox": false,
             "exchangeTo": false,
             "exchangeFrom": false,
             "syncToPit": false
           },
           "coinCode": "ALGO",
-          "coinTicker": "ALGO",
+          "coinTicker": "HTH",
           "colorCode": "algo",
-          "displayName": "Algorand",
+          "displayName": "Help The Homeless",
           "hasLockboxSupport": false,
           "icons": {
             "default": "algo",
@@ -267,7 +267,7 @@
           },
           "learnMoreLink": "",
           "minConfirmations": 3,
-          "txExplorerBaseUrl": "",
+          "txExplorerBaseUrl": "https://openchains.info/coin/hth/blocks",
           "txListAppRoute": "/algo/transactions"
         },
         "PAX": {
